@@ -1,22 +1,35 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
-import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import Index from "./pages/Index.tsx";
-import NotFound from "./pages/NotFound.tsx";
+import Onboarding from "./pages/Onboarding";
+import Dashboard from "./pages/Dashboard";
+import AddTransaction from "./pages/AddTransaction";
+import CashFlow from "./pages/CashFlow";
+import Quiz from "./pages/Quiz";
+import Credit from "./pages/Credit";
+import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+function RootRedirect() {
+  const onboarded = localStorage.getItem('tanamao-onboarded');
+  return <Navigate to={onboarded ? '/dashboard' : '/onboarding'} replace />;
+}
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
-      <Toaster />
       <Sonner />
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Index />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+          <Route path="/" element={<RootRedirect />} />
+          <Route path="/onboarding" element={<Onboarding />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/adicionar" element={<AddTransaction />} />
+          <Route path="/fluxo" element={<CashFlow />} />
+          <Route path="/crescer" element={<Quiz />} />
+          <Route path="/credito" element={<Credit />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
