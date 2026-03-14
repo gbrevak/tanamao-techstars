@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { ReactComponent as Logo } from '@/assets/logo.svg';
+import Logo from '@/assets/logo.svg?react';
 import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
 import { useFinanceStore } from '@/hooks/useFinanceStore';
 import PeriodFilter from '@/components/PeriodFilter';
