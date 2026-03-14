@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import logo from '@/assets/logo.png';
+import { ReactComponent as Logo } from '@/assets/logo.svg';
 import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
 import { useFinanceStore } from '@/hooks/useFinanceStore';
 import PeriodFilter from '@/components/PeriodFilter';
@@ -15,19 +15,27 @@ export default function Dashboard() {
     <div className="min-h-screen gradient-bg pb-24">
       {/* Header */}
       <div className="px-4 pt-8 pb-6">
-        <div className="flex items-center gap-3 mb-2">
-          <img src={logo} alt="Tá na Mão" className="w-10 h-10" />
+        {/* Logo centralizado em cima do título */}
+        <div className="flex flex-col items-center mb-4">
+          <motion.div
+            className="w-16 h-16 mb-2"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.05 }}
+          >
+            <Logo className="w-full h-full text-white" />
+          </motion.div>
           <motion.h1
             className="text-3xl font-extrabold text-foreground tracking-tight"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
           >
-            Tá na Mão 🤙
+            Tá na Mão
           </motion.h1>
         </div>
         <motion.p
-          className="text-foreground/60 text-sm font-medium"
+          className="text-foreground/60 text-sm font-medium text-center"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
         >
