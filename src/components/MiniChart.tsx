@@ -6,16 +6,27 @@ interface Props {
 }
 
 export default function MiniChart({ transactions }: Props) {
-  const data = useMemo(() => {
+  const { data, totaisEntradas, totaisSaidas } = useMemo(() => {
     const days: Record<string, { entradas: number; saidas: number }> = {};
+    let totaisEntradas = 0;
+    let totaisSaidas = 0;
     transactions.forEach(t => {
       const key = new Date(t.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
       if (!days[key]) days[key] = { entradas: 0, saidas: 0 };
-      if (t.tipo === 'entrada') days[key].entradas += t.valor;
-      else days[key].saidas += t.valor;
+      if (t.tipo === 'entrada') {
+        days[key].entradas += t.valor;
+        totaisEntradas += t.valor;
+      } else {
+        days[key].saidas += t.valor;
+        totaisSaidas += t.valor;
+      }
     });
-    return Object.entries(days).reverse().slice(-7);
+    return { data: Object.entries(days).reverse().slice(-7), totaisEntradas, totaisSaidas };
   }, [transactions]);
+
+  const totalGeral = totaisEntradas + totaisSaidas;
+  const pctEntradas = totalGeral > 0 ? (totaisEntradas / totalGeral) * 100 : 0;
+  const pctSaidas = totalGeral > 0 ? (totaisSaidas / totalGeral) * 100 : 0;
 
   const max = Math.max(...data.map(([, d]) => Math.max(d.entradas, d.saidas)), 1);
 
@@ -39,13 +50,25 @@ export default function MiniChart({ transactions }: Props) {
           </div>
         ))}
       </div>
-      <div className="flex gap-4 mt-2 justify-center">
-        <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <span className="w-2 h-2 rounded-full bg-money" /> Entrou
-        </span>
-        <span className="flex items-center gap-1 text-xs text-muted-foreground">
-          <span className="w-2 h-2 rounded-full bg-expense" /> Saiu
-        </span>
+      <div className="grid grid-cols-2 gap-3 mt-3">
+        <div className="flex flex-col bg-muted/50 rounded-button p-2">
+          <span className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+            <span className="w-2 h-2 rounded-full bg-money" /> Entrou
+          </span>
+          <span className="text-sm font-bold text-money">
+            R$ {totaisEntradas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
+          </span>
+          <span className="text-[10px] text-muted-foreground">{pctEntradas.toFixed(0)}% do total</span>
+        </div>
+        <div className="flex flex-col bg-muted/50 rounded-button p-2">
+          <span className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
+            <span className="w-2 h-2 rounded-full bg-expense" /> Saiu
+          </span>
+          <span className="text-sm font-bold text-expense">
+            R$ {totaisSaidas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
+          </span>
+          <span className="text-[10px] text-muted-foreground">{pctSaidas.toFixed(0)}% do total</span>
+        </div>
       </div>
     </div>
   );
