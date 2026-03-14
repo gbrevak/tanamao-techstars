@@ -11,7 +11,7 @@ export default function PeriodFilter({ value, onChange, variant = 'dark' }: Prop
   const isDark = variant === 'dark';
 
   return (
-    <div className={`flex gap-2 p-1 rounded-button ${isDark ? 'bg-foreground/10' : 'bg-muted'}`}>
+    <div className={`flex gap-2 p-1 rounded-button ${isDark ? 'glass-surface' : 'bg-muted'}`}>
       {PERIOD_FILTERS.map((f) => (
         <button
           key={f.value}
