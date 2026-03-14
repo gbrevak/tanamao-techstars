@@ -6,16 +6,27 @@ interface Props {
 }
 
 export default function MiniChart({ transactions }: Props) {
-  const data = useMemo(() => {
+  const { data, totaisEntradas, totaisSaidas } = useMemo(() => {
     const days: Record<string, { entradas: number; saidas: number }> = {};
+    let totaisEntradas = 0;
+    let totaisSaidas = 0;
     transactions.forEach(t => {
       const key = new Date(t.data).toLocaleDateString('pt-BR', { day: '2-digit', month: '2-digit' });
       if (!days[key]) days[key] = { entradas: 0, saidas: 0 };
-      if (t.tipo === 'entrada') days[key].entradas += t.valor;
-      else days[key].saidas += t.valor;
+      if (t.tipo === 'entrada') {
+        days[key].entradas += t.valor;
+        totaisEntradas += t.valor;
+      } else {
+        days[key].saidas += t.valor;
+        totaisSaidas += t.valor;
+      }
     });
-    return Object.entries(days).reverse().slice(-7);
+    return { data: Object.entries(days).reverse().slice(-7), totaisEntradas, totaisSaidas };
   }, [transactions]);
+
+  const totalGeral = totaisEntradas + totaisSaidas;
+  const pctEntradas = totalGeral > 0 ? (totaisEntradas / totalGeral) * 100 : 0;
+  const pctSaidas = totalGeral > 0 ? (totaisSaidas / totalGeral) * 100 : 0;
 
   const max = Math.max(...data.map(([, d]) => Math.max(d.entradas, d.saidas)), 1);
 
