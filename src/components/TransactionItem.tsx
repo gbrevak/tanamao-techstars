@@ -15,7 +15,7 @@ export default function TransactionItem({ transaction, index }: Props) {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.05, duration: 0.3, ease: [0.34, 1.56, 0.64, 1] }}
-      className="flex items-center gap-3 p-3 rounded-card bg-card hover:bg-muted/50 transition-colors"
+      className="flex items-center gap-3 p-3 rounded-card glass-surface hover:bg-white/10 transition-colors"
     >
       <div className="w-10 h-10 rounded-full bg-muted flex items-center justify-center text-lg flex-shrink-0">
         {cat.emoji}
