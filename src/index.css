@@ -10,19 +10,19 @@
     --foreground: 0 0% 98%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 30% 15%;
+    --card-foreground: 0 0% 98%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 30% 15%;
+    --popover-foreground: 0 0% 98%;
 
-    --primary: 144 60% 40%;
+    --primary: 144 60% 45%;
     --primary-foreground: 0 0% 100%;
 
     --secondary: 150 20% 90%;
     --secondary-foreground: 150 30% 15%;
 
-    --muted: 150 10% 92%;
-    --muted-foreground: 150 10% 40%;
+    --muted: 0 0% 100% / 0.1;
+    --muted-foreground: 0 0% 100% / 0.6;
 
     --accent: 144 70% 45%;
     --accent-foreground: 0 0% 100%;
@@ -30,16 +30,16 @@
     --destructive: 25 70% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 150 20% 85%;
-    --input: 150 20% 85%;
-    --ring: 144 60% 40%;
+    --border: 0 0% 100% / 0.15;
+    --input: 0 0% 100% / 0.15;
+    --ring: 144 60% 45%;
 
     --radius: 1.5rem;
 
-    --money: 144 60% 40%;
+    --money: 144 70% 55%;
     --business: 150 50% 30%;
     --personal: 220 40% 55%;
-    --expense: 25 60% 50%;
+    --expense: 0 70% 60%;
     --surface: 0 0% 100%;
     --surface-glass: 0 0% 100%;
 
