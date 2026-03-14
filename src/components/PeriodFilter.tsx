@@ -11,7 +11,7 @@ export default function PeriodFilter({ value, onChange, variant = 'dark' }: Prop
   const isDark = variant === 'dark';
 
   return (
-    <div className={`flex gap-2 p-1 rounded-button ${isDark ? 'bg-foreground/10' : 'bg-muted'}`}>
+    <div className={`flex gap-2 p-1 rounded-button ${isDark ? 'glass-surface' : 'bg-muted'}`}>
       {PERIOD_FILTERS.map((f) => (
         <button
           key={f.value}
@@ -25,7 +25,7 @@ export default function PeriodFilter({ value, onChange, variant = 'dark' }: Prop
           {value === f.value && (
             <motion.div
               layoutId={`period-${variant}`}
-              className={`absolute inset-0 rounded-button ${isDark ? 'bg-card' : 'bg-primary'}`}
+              className={`absolute inset-0 rounded-button ${isDark ? 'bg-white/15' : 'bg-primary'}`}
               transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
             />
           )}
