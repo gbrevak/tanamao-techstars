@@ -25,7 +25,7 @@ export default function PeriodFilter({ value, onChange, variant = 'dark' }: Prop
           {value === f.value && (
             <motion.div
               layoutId={`period-${variant}`}
-              className={`absolute inset-0 rounded-button ${isDark ? 'bg-card' : 'bg-primary'}`}
+              className={`absolute inset-0 rounded-button ${isDark ? 'bg-white/15' : 'bg-primary'}`}
               transition={{ type: 'spring', bounce: 0.2, duration: 0.4 }}
             />
           )}
