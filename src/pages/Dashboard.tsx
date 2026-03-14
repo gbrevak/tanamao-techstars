@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import logo from '@/assets/logo.png';
 import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
 import { useFinanceStore } from '@/hooks/useFinanceStore';
 import PeriodFilter from '@/components/PeriodFilter';
@@ -14,6 +15,17 @@ export default function Dashboard() {
     <div className="min-h-screen gradient-bg pb-24">
       {/* Header */}
       <div className="px-4 pt-8 pb-6">
+        <div className="flex items-center gap-3 mb-2">
+          <img src={logo} alt="Tá na Mão" className="w-10 h-10" />
+          <motion.h1
+            className="text-3xl font-extrabold text-foreground tracking-tight"
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.1 }}
+          >
+            Tá na Mão 🤙
+          </motion.h1>
+        </div>
         <motion.p
           className="text-foreground/60 text-sm font-medium"
           initial={{ opacity: 0 }}
@@ -21,17 +33,9 @@ export default function Dashboard() {
         >
           E aí, como tá o bolso hoje?
         </motion.p>
-        <motion.h1
-          className="text-3xl font-extrabold text-foreground tracking-tight"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-        >
-          Tá na Mão 🤙
-        </motion.h1>
 
         {/* Period filter */}
-        <div className="mt-4">
+        <div className="mt-4 flex justify-center">
           <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
         </div>
       </div>
