@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, Landmark, FileSpreadsheet, PenLine } from 'lucide-react';
+import { Plus, Landmark, FileSpreadsheet, PenLine, Camera } from 'lucide-react';
 
 const menuItems = [
   { icon: Landmark, label: 'OpenFinance', path: '/openfinance', color: 'bg-primary' },
+  { icon: Camera, label: 'Tirar Foto', path: '/tirar-foto', color: 'bg-money' },
   { icon: FileSpreadsheet, label: 'Importar CSV', path: '/importar-csv', color: 'bg-accent' },
   { icon: PenLine, label: 'Manual', path: '/adicionar', color: 'bg-money' },
 ];
@@ -40,7 +41,8 @@ export default function AddMenu() {
                 exit={{ opacity: 0, y: 20, scale: 0.8 }}
                 transition={{ delay: i * 0.06, type: 'spring', bounce: 0.3 }}
                 onClick={() => { setOpen(false); navigate(item.path); }}
-                className="flex items-center gap-3 glass-surface rounded-button px-5 py-3 min-w-[180px] brand-bounce"
+                className="flex items-center gap-3 rounded-button px-5 py-3 min-w-[180px] brand-bounce"
+                style={{ background: 'hsla(150, 30%, 8%, 0.92)', border: '1px solid hsla(0, 0%, 100%, 0.12)' }}
               >
                 <div className={`w-9 h-9 rounded-full ${item.color} flex items-center justify-center`}>
                   <item.icon className="w-4 h-4 text-primary-foreground" />

@@ -10,6 +10,7 @@ import Quiz from "./pages/Quiz";
 import Credit from "./pages/Credit";
 import OpenFinance from "./pages/OpenFinance";
 import ImportCSV from "./pages/ImportCSV";
+import TakePhoto from "./pages/TakePhoto";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -34,6 +35,7 @@ const App = () => (
           <Route path="/credito" element={<Credit />} />
           <Route path="/openfinance" element={<OpenFinance />} />
           <Route path="/importar-csv" element={<ImportCSV />} />
+          <Route path="/tirar-foto" element={<TakePhoto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

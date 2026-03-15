@@ -7,8 +7,7 @@ export default function ImportCSV() {
   const navigate = useNavigate();
 
   const handleFile = () => {
-    toast.success('CSV importado com sucesso! ✅');
-    setTimeout(() => navigate('/dashboard'), 1200);
+    toast.info('🔧 Essa feature está em manutenção. Volte em breve!');
   };
 
   return (
