@@ -123,7 +123,7 @@ export default function Dashboard() {
             </div>
           ) : (
             transactions.map((t, i) => (
-              <TransactionItem key={t.id} transaction={t} index={i} />
+              <TransactionItem key={t.id} transaction={t} index={i} valoresVisiveis={valoresVisiveis} />
             ))
           )}
         </div>
