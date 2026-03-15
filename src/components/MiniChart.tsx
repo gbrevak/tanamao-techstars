@@ -3,9 +3,10 @@ import { useMemo } from 'react';
 
 interface Props {
   transactions: Transaction[];
+  valoresVisiveis?: boolean;
 }
 
-export default function MiniChart({ transactions }: Props) {
+export default function MiniChart({ transactions, valoresVisiveis = true }: Props) {
   const { data, totaisEntradas, totaisSaidas } = useMemo(() => {
     const days: Record<string, { entradas: number; saidas: number }> = {};
     let totaisEntradas = 0;
@@ -56,18 +57,18 @@ export default function MiniChart({ transactions }: Props) {
             <span className="w-2 h-2 rounded-full bg-money" /> Entrou
           </span>
           <span className="text-sm font-bold text-money">
-            R$ {totaisEntradas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
+            {valoresVisiveis ? `R$ ${totaisEntradas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}` : '•••••'}
           </span>
-          <span className="text-[10px] text-muted-foreground">{pctEntradas.toFixed(0)}% do total</span>
+          <span className="text-[10px] text-muted-foreground">{valoresVisiveis ? `${pctEntradas.toFixed(0)}% do total` : '•••'}</span>
         </div>
         <div className="flex flex-col bg-muted/50 rounded-button p-2">
           <span className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <span className="w-2 h-2 rounded-full bg-expense" /> Saiu
           </span>
           <span className="text-sm font-bold text-expense">
-            R$ {totaisSaidas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}
+            {valoresVisiveis ? `R$ ${totaisSaidas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}` : '•••••'}
           </span>
-          <span className="text-[10px] text-muted-foreground">{pctSaidas.toFixed(0)}% do total</span>
+          <span className="text-[10px] text-muted-foreground">{valoresVisiveis ? `${pctSaidas.toFixed(0)}% do total` : '•••'}</span>
         </div>
       </div>
     </div>

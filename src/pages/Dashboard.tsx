@@ -109,7 +109,7 @@ export default function Dashboard() {
 
       {/* Chart */}
       <div className="px-4 mb-4">
-        <MiniChart transactions={transactions} />
+        <MiniChart transactions={transactions} valoresVisiveis={valoresVisiveis} />
       </div>
 
       {/* Transactions */}
@@ -123,7 +123,7 @@ export default function Dashboard() {
             </div>
           ) : (
             transactions.map((t, i) => (
-              <TransactionItem key={t.id} transaction={t} index={i} />
+              <TransactionItem key={t.id} transaction={t} index={i} valoresVisiveis={valoresVisiveis} />
             ))
           )}
         </div>

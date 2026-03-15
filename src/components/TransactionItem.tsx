@@ -4,9 +4,10 @@ import { motion } from 'framer-motion';
 interface Props {
   transaction: Transaction;
   index: number;
+  valoresVisiveis?: boolean;
 }
 
-export default function TransactionItem({ transaction, index }: Props) {
+export default function TransactionItem({ transaction, index, valoresVisiveis = true }: Props) {
   const cat = CATEGORIES[transaction.categoria];
   const isEntrada = transaction.tipo === 'entrada';
 
@@ -28,7 +29,7 @@ export default function TransactionItem({ transaction, index }: Props) {
         </p>
       </div>
       <span className={`text-sm font-bold ${isEntrada ? 'text-money' : 'text-expense'}`}>
-        {isEntrada ? '+' : '-'} R$ {transaction.valor.toFixed(0)}
+        {valoresVisiveis ? `${isEntrada ? '+' : '-'} R$ ${transaction.valor.toFixed(0)}` : '•••••'}
       </span>
     </motion.div>
   );
