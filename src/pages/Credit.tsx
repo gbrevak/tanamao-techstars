@@ -14,8 +14,8 @@ export default function Credit() {
           <ArrowLeft className="w-5 h-5" /> Voltar
         </button>
 
-        <h1 className="text-2xl font-extrabold text-foreground mb-1">Crédito 💳</h1>
-        <p className="text-foreground/60 text-sm mb-6">Opções especiais pra quem usa o Tá na Mão</p>
+        <h1 className="text-2xl font-extrabold text-foreground mb-1 text-center">Crédito 💳</h1>
+        <p className="text-foreground/60 text-sm mb-6 text-center">Opções especiais pra quem usa o Tá na Mão</p>
 
         <div className="space-y-4">
           {creditOptions.map((credit, i) => (
