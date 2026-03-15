@@ -58,10 +58,10 @@ export default function Dashboard() {
             <p className="text-sm text-muted-foreground font-medium">Saldo no período</p>
             <motion.button
               onClick={() => setValoresVisiveis(v => !v)}
-              className="p-1 text-muted-foreground"
+              className="w-8 h-8 rounded-full bg-white/10 flex items-center justify-center text-muted-foreground"
               whileTap={{ scale: 0.9 }}
             >
-              {valoresVisiveis ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+              {valoresVisiveis ? <Eye className="w-[18px] h-[18px]" /> : <EyeOff className="w-[18px] h-[18px]" />}
             </motion.button>
           </div>
           <p className={`text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
