@@ -36,8 +36,8 @@ export default function Dashboard() {
               <Logo className="w-full h-full text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-extrabold text-foreground tracking-tight leading-tight">Tá na Mão</h1>
-              <p className="text-foreground/50 text-xs font-medium">E aí, como tá o bolso?</p>
+              <h1 className="text-lg sm:text-xl font-extrabold text-foreground tracking-tight leading-tight whitespace-nowrap">Tá na Mão</h1>
+              <p className="text-foreground/50 text-[11px] sm:text-xs font-medium whitespace-nowrap">E aí, como tá o bolso?</p>
             </div>
           </motion.div>
 

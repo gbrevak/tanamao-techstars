@@ -28,7 +28,7 @@ export default function TransactionItem({ transaction, index, valoresVisiveis = 
           {new Date(transaction.data).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })}
         </p>
       </div>
-      <span className={`text-sm font-bold ${isEntrada ? 'text-money' : 'text-expense'}`}>
+      <span className={`text-xs sm:text-sm font-bold whitespace-nowrap ${isEntrada ? 'text-money' : 'text-expense'}`}>
         {valoresVisiveis ? `${isEntrada ? '+' : '-'} R$ ${transaction.valor.toFixed(0)}` : '•••••'}
       </span>
     </motion.div>

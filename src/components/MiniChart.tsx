@@ -65,10 +65,10 @@ export default function MiniChart({ transactions, valoresVisiveis = true }: Prop
           <span className="flex items-center gap-1.5 text-xs text-muted-foreground mb-1">
             <span className="w-2 h-2 rounded-full bg-expense" /> Saiu
           </span>
-          <span className="text-sm font-bold text-expense">
+          <span className="text-xs sm:text-sm font-bold text-expense truncate">
             {valoresVisiveis ? `R$ ${totaisSaidas.toLocaleString('pt-BR', { maximumFractionDigits: 0 })}` : '•••••'}
           </span>
-          <span className="text-[10px] text-muted-foreground">{valoresVisiveis ? `${pctSaidas.toFixed(0)}% do total` : '•••'}</span>
+          <span className="text-[9px] sm:text-[10px] text-muted-foreground">{valoresVisiveis ? `${pctSaidas.toFixed(0)}% do total` : '•••'}</span>
         </div>
       </div>
     </div>
