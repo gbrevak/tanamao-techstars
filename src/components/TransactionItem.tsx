@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 interface Props {
   transaction: Transaction;
   index: number;
+  valoresVisiveis?: boolean;
 }
 
 export default function TransactionItem({ transaction, index }: Props) {
