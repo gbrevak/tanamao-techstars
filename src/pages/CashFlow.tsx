@@ -49,7 +49,7 @@ export default function CashFlow() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center justify-center gap-2 mb-3">
             <Target className="w-5 h-5 text-money" />
             <h2 className="font-bold text-card-foreground">Projeção pro mês</h2>
           </div>
@@ -74,7 +74,7 @@ export default function CashFlow() {
 
         {/* Category breakdown */}
         <div className="mt-4">
-          <h2 className="text-sm font-semibold text-foreground/70 mb-2">Pra onde tá indo o dinheiro</h2>
+          <h2 className="text-sm font-semibold text-foreground/70 mb-2 text-center">Pra onde tá indo o dinheiro</h2>
           <div className="glass-surface rounded-card p-4 space-y-3">
             {categoryBreakdown.length === 0 ? (
               <p className="text-muted-foreground text-sm text-center py-4">Sem gastos nesse período 🎉</p>
