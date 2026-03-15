@@ -1,10 +1,11 @@
 import { useEffect, useMemo, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ArrowRight, Target } from 'lucide-react';
+import { ArrowLeft, Target } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { toast } from '@/components/ui/sonner';
+import BottomNav from '@/components/BottomNav';
 
 type Goal = {
   title: string;
@@ -69,18 +70,12 @@ export default function Goals() {
   return (
     <div className="min-h-screen gradient-bg pb-24">
       <div className="px-4 pt-6">
-        <div className="flex items-center justify-between">
-          <div>
-            <h1 className="text-2xl font-extrabold text-foreground">Objetivos 🎯</h1>
-            <p className="text-muted-foreground text-sm mt-1">Define sua meta e a gente te lembra todo mês quanto precisa guardar.</p>
-          </div>
-          <button
-            onClick={() => navigate('/dashboard')}
-            className="text-xs font-semibold text-primary flex items-center gap-1"
-          >
-            Voltar <ArrowRight className="w-4 h-4 rotate-180" />
-          </button>
-        </div>
+        <button onClick={() => navigate('/dashboard')} className="touch-target flex items-center gap-1 text-foreground/70 mb-2">
+          <ArrowLeft className="w-5 h-5" /> Voltar
+        </button>
+
+        <h1 className="text-2xl font-extrabold text-foreground mb-1">Objetivos 🎯</h1>
+        <p className="text-muted-foreground text-sm mb-6">Define sua meta e a gente te lembra todo mês quanto precisa guardar.</p>
 
         <div className="mt-6 glass-surface rounded-card p-5 space-y-4">
           <div className="space-y-2">
@@ -144,6 +139,7 @@ export default function Goals() {
         </div>
       </div>
 
+      <BottomNav />
     </div>
   );
 }
