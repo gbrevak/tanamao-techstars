@@ -8,6 +8,8 @@ import AddTransaction from "./pages/AddTransaction";
 import CashFlow from "./pages/CashFlow";
 import Quiz from "./pages/Quiz";
 import Credit from "./pages/Credit";
+import OpenFinance from "./pages/OpenFinance";
+import ImportCSV from "./pages/ImportCSV";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
