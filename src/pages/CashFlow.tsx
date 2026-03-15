@@ -39,7 +39,7 @@ export default function CashFlow() {
           <ArrowLeft className="w-5 h-5" /> Voltar
         </button>
 
-        <h1 className="text-2xl font-extrabold text-foreground mb-4">Fluxo de Caixa 📊</h1>
+        <h1 className="text-2xl font-extrabold text-foreground mb-4 text-center">Fluxo de Caixa 📊</h1>
 
         <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
 

@@ -79,9 +79,9 @@ export default function Quiz() {
           <ArrowLeft className="w-5 h-5" /> Voltar
         </button>
 
-        <div className="flex items-center justify-between mb-4">
-          <h1 className="text-2xl font-extrabold text-foreground">Crescer 🎓</h1>
-          <span className="text-sm text-foreground/60 font-medium">
+        <div className="flex items-center justify-center mb-4 relative">
+          <h1 className="text-2xl font-extrabold text-foreground text-center">Crescer 🎓</h1>
+          <span className="absolute right-0 text-sm text-foreground/60 font-medium">
             {current + 1}/{quizQuestions.length}
           </span>
         </div>
