@@ -11,12 +11,12 @@ export default function PeriodFilter({ value, onChange, variant = 'dark' }: Prop
   const isDark = variant === 'dark';
 
   return (
-    <div className={`flex gap-2 p-1 rounded-button ${isDark ? 'glass-surface' : 'bg-muted'}`}>
+    <div className={`flex gap-1 p-0.5 rounded-button ${isDark ? 'glass-surface' : 'bg-muted'}`}>
       {PERIOD_FILTERS.map((f) => (
         <button
           key={f.value}
           onClick={() => onChange(f.value)}
-          className={`relative px-4 py-2 rounded-button text-sm font-semibold touch-target transition-colors ${
+          className={`relative px-2 sm:px-4 py-1.5 sm:py-2 rounded-button text-[11px] sm:text-sm font-semibold transition-colors ${
             value === f.value
               ? isDark ? 'text-card-foreground' : 'text-primary-foreground'
               : isDark ? 'text-foreground/60' : 'text-muted-foreground'
