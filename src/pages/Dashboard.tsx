@@ -54,9 +54,9 @@ export default function Dashboard() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
         >
-          <p className="text-sm text-muted-foreground font-medium text-center mb-1">Saldo no período</p>
-          <div className="flex items-center justify-center gap-3">
-            <p className={`text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
+          <p className="text-xs sm:text-sm text-muted-foreground font-medium text-center mb-1">Saldo no período</p>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <p className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
               {formatCurrency(totals.saldo)}
             </p>
             <motion.button
