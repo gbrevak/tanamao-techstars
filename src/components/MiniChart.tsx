@@ -3,6 +3,7 @@ import { useMemo } from 'react';
 
 interface Props {
   transactions: Transaction[];
+  valoresVisiveis?: boolean;
 }
 
 export default function MiniChart({ transactions }: Props) {
