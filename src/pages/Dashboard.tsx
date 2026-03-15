@@ -1,6 +1,7 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import Logo from '@/assets/logo.svg?react';
-import { TrendingUp, TrendingDown, Wallet } from 'lucide-react';
+import { TrendingUp, TrendingDown, Wallet, Eye, EyeOff, DollarSign } from 'lucide-react';
 import { useFinanceStore } from '@/hooks/useFinanceStore';
 import PeriodFilter from '@/components/PeriodFilter';
 import AccountToggle from '@/components/AccountToggle';
@@ -10,42 +11,50 @@ import BottomNav from '@/components/BottomNav';
 
 export default function Dashboard() {
   const { transactions, period, setPeriod, accountFilter, setAccountFilter, totals } = useFinanceStore();
+  const [valoresVisiveis, setValoresVisiveis] = useState(false);
+
+  const formatCurrency = (value: number) => {
+    if (!valoresVisiveis) return '•••••';
+    return `R$ ${value.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}`;
+  };
+
+  const lucro = totals.entradas > 0 ? ((totals.saldo / totals.entradas) * 100) : 0;
 
   return (
     <div className="min-h-screen gradient-bg pb-24">
       {/* Header */}
-      <div className="px-4 pt-8 pb-6">
-        {/* Logo centralizado em cima do título */}
-        <div className="flex flex-col items-center mb-4">
+      <div className="px-4 pt-6 pb-4">
+        <div className="flex items-center justify-between mb-3">
+          {/* Logo + Title */}
           <motion.div
-            className="w-16 h-16 mb-2"
-            initial={{ opacity: 0, scale: 0.8 }}
-            animate={{ opacity: 1, scale: 1 }}
+            className="flex items-center gap-3"
+            initial={{ opacity: 0, x: -10 }}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.05 }}
           >
-            <Logo className="w-full h-full text-white" />
+            <div className="w-10 h-10">
+              <Logo className="w-full h-full text-white" />
+            </div>
+            <div>
+              <h1 className="text-xl font-extrabold text-foreground tracking-tight leading-tight">Tá na Mão</h1>
+              <p className="text-foreground/50 text-xs font-medium">E aí, como tá o bolso?</p>
+            </div>
           </motion.div>
-          <motion.h1
-            className="text-3xl font-extrabold text-foreground tracking-tight"
-            initial={{ opacity: 0, y: 10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.1 }}
+
+          {/* Eye toggle */}
+          <motion.button
+            onClick={() => setValoresVisiveis(v => !v)}
+            className="touch-target flex items-center justify-center text-foreground/60"
+            whileTap={{ scale: 0.9 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
           >
-            Tá na Mão
-          </motion.h1>
+            {valoresVisiveis ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
+          </motion.button>
         </div>
-        <motion.p
-          className="text-foreground/60 text-sm font-medium text-center"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-        >
-          E aí, como tá o bolso hoje?
-        </motion.p>
 
         {/* Period filter */}
-        <div className="mt-4 flex justify-center">
-          <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
-        </div>
+        <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
       </div>
 
       {/* Balance card */}
@@ -58,26 +67,37 @@ export default function Dashboard() {
         >
           <p className="text-sm text-muted-foreground font-medium mb-1">Saldo no período</p>
           <p className={`text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
-            R$ {totals.saldo.toLocaleString('pt-BR', { minimumFractionDigits: 0 })}
+            {formatCurrency(totals.saldo)}
           </p>
 
-          <div className="flex gap-4 mt-4">
-            <div className="flex items-center gap-2 flex-1">
-              <div className="w-8 h-8 rounded-full bg-money/15 flex items-center justify-center">
+          <div className="grid grid-cols-3 gap-3 mt-4">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-money/15 flex items-center justify-center shrink-0">
                 <TrendingUp className="w-4 h-4 text-money" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[11px] text-muted-foreground">Entrou</p>
-                <p className="text-sm font-bold text-card-foreground">R$ {totals.entradas.toLocaleString('pt-BR')}</p>
+                <p className="text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.entradas)}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2 flex-1">
-              <div className="w-8 h-8 rounded-full bg-expense/15 flex items-center justify-center">
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-expense/15 flex items-center justify-center shrink-0">
                 <TrendingDown className="w-4 h-4 text-expense" />
               </div>
-              <div>
+              <div className="min-w-0">
                 <p className="text-[11px] text-muted-foreground">Saiu</p>
-                <p className="text-sm font-bold text-card-foreground">R$ {totals.saidas.toLocaleString('pt-BR')}</p>
+                <p className="text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.saidas)}</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                <DollarSign className="w-4 h-4 text-primary" />
+              </div>
+              <div className="min-w-0">
+                <p className="text-[11px] text-muted-foreground">Lucro</p>
+                <p className={`text-sm font-bold truncate ${lucro >= 0 ? 'text-money' : 'text-expense'}`}>
+                  {valoresVisiveis ? `${lucro.toFixed(0)}%` : '•••'}
+                </p>
               </div>
             </div>
           </div>
