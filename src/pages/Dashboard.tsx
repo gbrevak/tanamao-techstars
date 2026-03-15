@@ -24,7 +24,7 @@ export default function Dashboard() {
     <div className="min-h-screen gradient-bg pb-24">
       {/* Header */}
       <div className="px-4 pt-6 pb-4">
-        <div className="flex items-center justify-between mb-3">
+        <div className="flex items-center justify-between">
           {/* Logo + Title */}
           <motion.div
             className="flex items-center gap-3"
@@ -41,20 +41,9 @@ export default function Dashboard() {
             </div>
           </motion.div>
 
-          {/* Eye toggle */}
-          <motion.button
-            onClick={() => setValoresVisiveis(v => !v)}
-            className="touch-target flex items-center justify-center text-foreground/60"
-            whileTap={{ scale: 0.9 }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-          >
-            {valoresVisiveis ? <Eye className="w-5 h-5" /> : <EyeOff className="w-5 h-5" />}
-          </motion.button>
+          {/* Period filter */}
+          <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
         </div>
-
-        {/* Period filter */}
-        <PeriodFilter value={period} onChange={setPeriod} variant="dark" />
       </div>
 
       {/* Balance card */}
@@ -65,7 +54,16 @@ export default function Dashboard() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
         >
-          <p className="text-sm text-muted-foreground font-medium mb-1">Saldo no período</p>
+          <div className="flex items-center justify-between mb-1">
+            <p className="text-sm text-muted-foreground font-medium">Saldo no período</p>
+            <motion.button
+              onClick={() => setValoresVisiveis(v => !v)}
+              className="p-1 text-muted-foreground"
+              whileTap={{ scale: 0.9 }}
+            >
+              {valoresVisiveis ? <Eye className="w-4 h-4" /> : <EyeOff className="w-4 h-4" />}
+            </motion.button>
+          </div>
           <p className={`text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
             {formatCurrency(totals.saldo)}
           </p>
