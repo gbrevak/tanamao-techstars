@@ -7,7 +7,7 @@ interface Props {
   valoresVisiveis?: boolean;
 }
 
-export default function TransactionItem({ transaction, index }: Props) {
+export default function TransactionItem({ transaction, index, valoresVisiveis = true }: Props) {
   const cat = CATEGORIES[transaction.categoria];
   const isEntrada = transaction.tipo === 'entrada';
 
