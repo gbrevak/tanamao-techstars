@@ -36,8 +36,8 @@ export default function Dashboard() {
               <Logo className="w-full h-full text-white" />
             </div>
             <div>
-              <h1 className="text-xl font-extrabold text-foreground tracking-tight leading-tight">Tá na Mão</h1>
-              <p className="text-foreground/50 text-xs font-medium">E aí, como tá o bolso?</p>
+              <h1 className="text-lg sm:text-xl font-extrabold text-foreground tracking-tight leading-tight whitespace-nowrap">Tá na Mão</h1>
+              <p className="text-foreground/50 text-[11px] sm:text-xs font-medium whitespace-nowrap">E aí, como tá o bolso?</p>
             </div>
           </motion.div>
 
@@ -54,9 +54,9 @@ export default function Dashboard() {
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.2, ease: [0.34, 1.56, 0.64, 1] }}
         >
-          <p className="text-sm text-muted-foreground font-medium text-center mb-1">Saldo no período</p>
-          <div className="flex items-center justify-center gap-3">
-            <p className={`text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
+          <p className="text-xs sm:text-sm text-muted-foreground font-medium text-center mb-1">Saldo no período</p>
+          <div className="flex items-center justify-center gap-2 sm:gap-3">
+            <p className={`text-2xl sm:text-3xl font-extrabold tracking-tight ${totals.saldo >= 0 ? 'text-money' : 'text-expense'}`}>
               {formatCurrency(totals.saldo)}
             </p>
             <motion.button
@@ -68,32 +68,32 @@ export default function Dashboard() {
             </motion.button>
           </div>
 
-          <div className="grid grid-cols-3 gap-3 mt-4">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-money/15 flex items-center justify-center shrink-0">
-                <TrendingUp className="w-4 h-4 text-money" />
+          <div className="grid grid-cols-3 gap-2 sm:gap-3 mt-4">
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-money/15 flex items-center justify-center shrink-0">
+                <TrendingUp className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-money" />
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground">Entrou</p>
-                <p className="text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.entradas)}</p>
+                <p className="text-[10px] sm:text-[11px] text-muted-foreground">Entrou</p>
+                <p className="text-xs sm:text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.entradas)}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-expense/15 flex items-center justify-center shrink-0">
-                <TrendingDown className="w-4 h-4 text-expense" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-expense/15 flex items-center justify-center shrink-0">
+                <TrendingDown className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-expense" />
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground">Saiu</p>
-                <p className="text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.saidas)}</p>
+                <p className="text-[10px] sm:text-[11px] text-muted-foreground">Saiu</p>
+                <p className="text-xs sm:text-sm font-bold text-card-foreground truncate">{formatCurrency(totals.saidas)}</p>
               </div>
             </div>
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
-                <DollarSign className="w-4 h-4 text-primary" />
+            <div className="flex items-center gap-1.5 sm:gap-2">
+              <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-primary/15 flex items-center justify-center shrink-0">
+                <DollarSign className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-primary" />
               </div>
               <div className="min-w-0">
-                <p className="text-[11px] text-muted-foreground">Lucro</p>
-                <p className={`text-sm font-bold truncate ${lucro >= 0 ? 'text-money' : 'text-expense'}`}>
+                <p className="text-[10px] sm:text-[11px] text-muted-foreground">Lucro</p>
+                <p className={`text-xs sm:text-sm font-bold truncate ${lucro >= 0 ? 'text-money' : 'text-expense'}`}>
                   {valoresVisiveis ? `${lucro.toFixed(0)}%` : '•••'}
                 </p>
               </div>
