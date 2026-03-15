@@ -114,8 +114,7 @@ export default function Onboarding() {
                 '✅ Anotar vendas e gastos em 10 segundos',
                 '✅ Separar o que é do negócio e o que é pessoal',
                 '✅ Saber quanto tá sobrando de verdade',
-                '✅ Aprender sobre MEI de um jeito fácil',
-                '✅ Acessar crédito com taxas melhores',
+
               ].map((item, i) => (
                 <motion.p
                   key={i}

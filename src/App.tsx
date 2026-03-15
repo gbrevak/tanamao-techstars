@@ -7,6 +7,7 @@ import Dashboard from "./pages/Dashboard";
 import AddTransaction from "./pages/AddTransaction";
 import CashFlow from "./pages/CashFlow";
 import Quiz from "./pages/Quiz";
+import Goals from "./pages/Goals";
 import Credit from "./pages/Credit";
 import OpenFinance from "./pages/OpenFinance";
 import ImportCSV from "./pages/ImportCSV";
@@ -32,6 +33,7 @@ const App = () => (
           <Route path="/adicionar" element={<AddTransaction />} />
           <Route path="/fluxo" element={<CashFlow />} />
           <Route path="/crescer" element={<Quiz />} />
+          <Route path="/objetivos" element={<Goals />} />
           <Route path="/credito" element={<Credit />} />
           <Route path="/openfinance" element={<OpenFinance />} />
           <Route path="/importar-csv" element={<ImportCSV />} />

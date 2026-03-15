@@ -1,4 +1,4 @@
-import { Home, TrendingUp, GraduationCap, CreditCard } from 'lucide-react';
+import { Home, TrendingUp, GraduationCap, Target } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import AddMenu from '@/components/AddMenu';
 
@@ -7,7 +7,7 @@ const navItems = [
   { icon: TrendingUp, label: 'Fluxo', path: '/fluxo' },
   { key: 'center', isCenter: true },
   { icon: GraduationCap, label: 'Crescer', path: '/crescer' },
-  { icon: CreditCard, label: 'Crédito', path: '/credito' },
+  { icon: Target, label: 'Objetivos', path: '/objetivos' },
 ] as const;
 
 export default function BottomNav() {
