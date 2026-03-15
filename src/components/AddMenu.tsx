@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Plus, X, Landmark, FileSpreadsheet, PenLine } from 'lucide-react';
+import { Plus, Landmark, FileSpreadsheet, PenLine, Camera } from 'lucide-react';
 
 const menuItems = [
   { icon: Landmark, label: 'OpenFinance', path: '/openfinance', color: 'bg-primary' },
+  { icon: Camera, label: 'Tirar Foto', path: '/tirar-foto', color: 'bg-money' },
   { icon: FileSpreadsheet, label: 'Importar CSV', path: '/importar-csv', color: 'bg-accent' },
   { icon: PenLine, label: 'Manual', path: '/adicionar', color: 'bg-money' },
 ];
