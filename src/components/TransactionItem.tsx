@@ -29,7 +29,7 @@ export default function TransactionItem({ transaction, index, valoresVisiveis = 
         </p>
       </div>
       <span className={`text-sm font-bold ${isEntrada ? 'text-money' : 'text-expense'}`}>
-        {isEntrada ? '+' : '-'} R$ {transaction.valor.toFixed(0)}
+        {valoresVisiveis ? `${isEntrada ? '+' : '-'} R$ ${transaction.valor.toFixed(0)}` : '•••••'}
       </span>
     </motion.div>
   );
