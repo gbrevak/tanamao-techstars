@@ -35,6 +35,7 @@ const App = () => (
           <Route path="/credito" element={<Credit />} />
           <Route path="/openfinance" element={<OpenFinance />} />
           <Route path="/importar-csv" element={<ImportCSV />} />
+          <Route path="/tirar-foto" element={<TakePhoto />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>
