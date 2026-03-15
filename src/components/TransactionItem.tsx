@@ -22,8 +22,8 @@ export default function TransactionItem({ transaction, index, valoresVisiveis = 
         {cat.emoji}
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold text-card-foreground truncate">{transaction.descricao}</p>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-xs sm:text-sm font-semibold text-card-foreground truncate">{transaction.descricao}</p>
+        <p className="text-[11px] sm:text-xs text-muted-foreground">
           {cat.label} · {transaction.conta === 'negocio' ? '💼' : '🏠'} {' '}
           {new Date(transaction.data).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' })}
         </p>
