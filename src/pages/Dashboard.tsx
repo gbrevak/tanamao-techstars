@@ -114,7 +114,7 @@ export default function Dashboard() {
 
       {/* Transactions */}
       <div className="px-4">
-        <h2 className="text-sm font-semibold text-foreground/70 mb-2">Últimas movimentações</h2>
+        <h2 className="text-sm font-semibold text-foreground/70 mb-2 text-center">Últimas movimentações</h2>
         <div className="space-y-2">
           {transactions.length === 0 ? (
             <div className="glass-surface rounded-card p-6 text-center">

@@ -74,7 +74,7 @@ export default function CashFlow() {
 
         {/* Category breakdown */}
         <div className="mt-4">
-          <h2 className="text-sm font-semibold text-foreground/70 mb-2">Pra onde tá indo o dinheiro</h2>
+          <h2 className="text-sm font-semibold text-foreground/70 mb-2 text-center">Pra onde tá indo o dinheiro</h2>
           <div className="glass-surface rounded-card p-4 space-y-3">
             {categoryBreakdown.length === 0 ? (
               <p className="text-muted-foreground text-sm text-center py-4">Sem gastos nesse período 🎉</p>

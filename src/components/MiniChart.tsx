@@ -32,7 +32,7 @@ export default function MiniChart({ transactions }: Props) {
 
   return (
     <div className="glass-surface rounded-card p-4">
-      <h3 className="text-sm font-semibold text-card-foreground mb-3">Entrou vs. Saiu</h3>
+      <h3 className="text-sm font-semibold text-card-foreground mb-3 text-center">Entrou vs. Saiu</h3>
       <div className="flex items-end gap-2 h-24">
         {data.map(([label, d], i) => (
           <div key={i} className="flex-1 flex flex-col items-center gap-1">
