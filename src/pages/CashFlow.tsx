@@ -49,7 +49,7 @@ export default function CashFlow() {
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          <div className="flex items-center gap-2 mb-3">
+          <div className="flex items-center justify-center gap-2 mb-3">
             <Target className="w-5 h-5 text-money" />
             <h2 className="font-bold text-card-foreground">Projeção pro mês</h2>
           </div>
