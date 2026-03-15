@@ -10,6 +10,7 @@ import Quiz from "./pages/Quiz";
 import Credit from "./pages/Credit";
 import OpenFinance from "./pages/OpenFinance";
 import ImportCSV from "./pages/ImportCSV";
+import TakePhoto from "./pages/TakePhoto";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
