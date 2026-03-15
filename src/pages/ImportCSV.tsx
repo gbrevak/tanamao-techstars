@@ -1,13 +1,15 @@
 import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import { ArrowLeft, Upload } from 'lucide-react';
-import { toast } from 'sonner';
+import { motion, AnimatePresence } from 'framer-motion';
 import BottomNav from '@/components/BottomNav';
 
 export default function ImportCSV() {
   const navigate = useNavigate();
+  const [showPopup, setShowPopup] = useState(false);
 
   const handleFile = () => {
-    toast.info('🔧 Essa feature está em manutenção. Volte em breve!');
+    setShowPopup(true);
   };
 
   return (
@@ -36,6 +38,46 @@ export default function ImportCSV() {
       </div>
 
       <BottomNav />
+
+      {/* Maintenance Popup */}
+      <AnimatePresence>
+        {showPopup && (
+          <>
+            <motion.div
+              className="fixed inset-0 z-50 bg-black/70 backdrop-blur-sm"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setShowPopup(false)}
+            />
+            <motion.div
+              className="fixed left-1/2 top-1/2 z-50 -translate-x-1/2 -translate-y-1/2"
+              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.9, y: 20 }}
+              transition={{ type: 'spring', bounce: 0.3 }}
+            >
+              <div
+                className="rounded-card p-6 text-center max-w-[300px]"
+                style={{ background: 'hsla(150, 30%, 8%, 0.95)', border: '1px solid hsla(0, 0%, 100%, 0.12)' }}
+              >
+                <div className="w-12 h-12 rounded-full bg-accent/20 flex items-center justify-center mx-auto mb-4">
+                  <span className="text-2xl">🚧</span>
+                </div>
+                <p className="text-sm text-card-foreground mb-5 leading-relaxed">
+                  Estamos trabalhando nesta feature ainda! Obrigado pelo interesse, te avisaremos quando estiver pronta :)
+                </p>
+                <button
+                  onClick={() => setShowPopup(false)}
+                  className="w-full py-2.5 rounded-button bg-primary text-primary-foreground font-semibold text-sm brand-bounce"
+                >
+                  Entendido
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
