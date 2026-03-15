@@ -6,7 +6,7 @@ interface Props {
   valoresVisiveis?: boolean;
 }
 
-export default function MiniChart({ transactions }: Props) {
+export default function MiniChart({ transactions, valoresVisiveis = true }: Props) {
   const { data, totaisEntradas, totaisSaidas } = useMemo(() => {
     const days: Record<string, { entradas: number; saidas: number }> = {};
     let totaisEntradas = 0;
